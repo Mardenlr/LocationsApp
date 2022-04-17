@@ -1,0 +1,39 @@
+﻿<MudDialog DisableSidePadding="true">
+    <DialogContent>
+        <EditForm Model="City" OnValidSubmit="Ok">
+            <DataAnnotationsValidator />
+
+            <MudCard Elevation="0">
+                <MudCardContent>
+                    <MudTextField @bind-Value="@City.Id" Label="Id" Disabled="true" />
+                    <MudSelect T="int" 
+                               Label="Country" 
+                               Value="@City.CountryId" 
+                               For="@(()=>City.CountryId)" 
+                               ReadOnly="true"                                
+                               OnAdornmentClick="SelectCountry"
+                               TextChanged="CountryChanged"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="City.CountryId">@City.Country</MudSelectItem>
+                    </MudSelect>
+                    <MudSelect T="int" 
+                               Label="State" 
+                               Value="@City.StateId" 
+                               For="@(()=>City.StateId)" 
+                               ReadOnly="true" 
+                               OnAdornmentClick="SelectState" 
+                               TextChanged="@(()=>Console.WriteLine(AppMessages.WorkaroundForMudSelect))"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="City.StateId">@City.State</MudSelectItem>
+                    </MudSelect>
+                    <MudTextField @bind-Value="@City.Name" Label="Name" For="@(()=>City.Name)" />                    
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton OnClick="Cancel" Class="ml-auto mr-2">Cancel</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">Save</MudButton>
+                </MudCardActions>
+            </MudCard>         
+
+        </EditForm>
+    </DialogContent>
+</MudDialog>

@@ -1,0 +1,49 @@
+﻿<MudDialog DisableSidePadding="true">
+    <DialogContent>
+        <EditForm Model="District" OnValidSubmit="Ok">
+            <DataAnnotationsValidator />
+
+            <MudCard Elevation="0">
+                <MudCardContent>
+                    <MudTextField @bind-Value="@District.Id" Label="Id" Disabled="true" />
+                    <MudSelect T="int" 
+                               Label="Country" 
+                               Value="@District.CountryId" 
+                               For="@(()=>District.CountryId)" 
+                               ReadOnly="true"                                
+                               OnAdornmentClick="SelectCountry"
+                               TextChanged="CountryChanged"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="District.CountryId">@District.Country</MudSelectItem>
+                    </MudSelect>
+                    <MudSelect T="int" 
+                               Label="State" 
+                               Value="@District.StateId" 
+                               For="@(()=>District.StateId)" 
+                               ReadOnly="true" 
+                               OnAdornmentClick="SelectState" 
+                               TextChanged="StateChanged"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="District.StateId">@District.State</MudSelectItem>
+                    </MudSelect>
+                    <MudSelect T="int" 
+                               Label="City" 
+                               Value="@District.CityId" 
+                               For="@(()=>District.CityId)" 
+                               ReadOnly="true" 
+                               OnAdornmentClick="SelectCity" 
+                               TextChanged="@(()=>Console.WriteLine(AppMessages.WorkaroundForMudSelect))"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="District.CityId">@District.City</MudSelectItem>
+                    </MudSelect>
+                    <MudTextField @bind-Value="@District.Name" Label="Name" For="@(()=>District.Name)" />                    
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton OnClick="Cancel" Class="ml-auto mr-2">Cancel</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">Save</MudButton>
+                </MudCardActions>
+            </MudCard>         
+
+        </EditForm>
+    </DialogContent>
+</MudDialog>

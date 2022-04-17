@@ -1,0 +1,61 @@
+﻿@page "/locations/cities"
+
+<AppScreenIcon Icon="@Icons.Material.Filled.ArrowRight" Title="Cities" />
+
+@if (_cities == null)
+{
+    <MudProgressLinear Color="Color.Primary" Size="Size.Medium" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="_cities" Dense="true" Hover="true" Striped="false" Bordered="false">
+        <ToolBarContent>
+            <MudFab Icon="@Icons.Material.Filled.Add" Size="Size.Small" IconSize="Size.Small" OnClick="Add" />
+            <MudSpacer />
+            <MudTextField T="string" 
+                          ValueChanged="@((filter)=> Search(filter))" 
+                          Clearable="true" 
+                          Placeholder="Inform city name or state name"
+                          Adornment="Adornment.Start" 
+                          AdornmentIcon="@Icons.Material.Filled.Search" 
+                          IconSize="Size.Medium" 
+                          Class="mt-0" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>State</MudTh>
+            <MudTh>Country</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="State">@context.State</MudTd>
+            <MudTd DataLabel="Country">@context.Country</MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudFab @onclick="@(()=>Edit(context))" 
+                        Icon="@Icons.Material.Filled.Edit" 
+                        Size="Size.Small" 
+                        IconSize="Size.Small" 
+                        Class="m-2"></MudFab>
+                <MudFab @onclick="@(()=>Delete(context))" 
+                        Icon="@Icons.Material.Filled.Delete" 
+                        Size="Size.Small" 
+                        IconSize="Size.Small" 
+                        Class="m-2"></MudFab>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <AppPager CurrentPage="_currentPage"
+               PreviousDisabled="_previousPageDisabled"
+               NextDisabled="_nextPageDisabled"
+               OnPreviousClick="GoToPreviousPage"
+               OnNextClick="GoToNextPage"
+               RecordsCount="_totalRecords" />
+
+    <AppMessageBoxDelete @ref="_appMessageBoxDelete">
+        @($"{_cityToDelete.Id} - {_cityToDelete.Name}")
+    </AppMessageBoxDelete>
+}

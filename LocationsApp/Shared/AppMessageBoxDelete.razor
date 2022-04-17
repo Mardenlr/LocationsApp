@@ -1,0 +1,18 @@
+﻿<MudMessageBox @ref="_messageBox">
+    <TitleContent>
+        <MudText Typo="Typo.h6">Delete Record</MudText>
+        <MudDivider Class="mt-3" />
+    </TitleContent>
+    <MessageContent>
+        <div>
+            @ChildContent
+        </div>
+        <MudDivider Class="mt-5" />
+    </MessageContent>
+    <NoButton>
+        <MudButton>Cancel</MudButton>
+    </NoButton>
+    <YesButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete</MudButton>
+    </YesButton>
+</MudMessageBox>

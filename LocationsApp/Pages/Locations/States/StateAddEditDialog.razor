@@ -1,0 +1,31 @@
+﻿<MudDialog DisableSidePadding="true">
+    <DialogContent>
+        <EditForm Model="State" OnValidSubmit="Ok">
+            <DataAnnotationsValidator />
+
+            <MudCard Elevation="0">
+                <MudCardContent>
+                    <MudTextField @bind-Value="@State.Id" Label="Id" Disabled="true" />
+                    <MudSelect T="int" 
+                               Label="Country" 
+                               Value="@State.CountryId" 
+                               For="@(()=>State.CountryId)" 
+                               ReadOnly="true" 
+                               OnAdornmentClick="SelectCountry" 
+                               TextChanged="@(()=>Console.WriteLine(AppMessages.WorkaroundForMudSelect))"
+                               AdornmentIcon="@Icons.Filled.FilterAlt">
+                        <MudSelectItem Value="State.CountryId">@State.Country</MudSelectItem>
+                    </MudSelect>
+                    <MudTextField @bind-Value="@State.ShortCode" Label="Short Code" For="@(()=>State.ShortCode)" />
+                    <MudTextField @bind-Value="@State.Name" Label="Name" For="@(()=>State.Name)" />
+                    <MudTextField @bind-Value="@State.Capital" Label="Capital" For="@(()=>State.Capital)" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton OnClick="Cancel" Class="ml-auto mr-2">Cancel</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">Save</MudButton>
+                </MudCardActions>
+            </MudCard>         
+
+        </EditForm>
+    </DialogContent>
+</MudDialog>

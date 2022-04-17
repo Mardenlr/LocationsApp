@@ -1,0 +1,19 @@
+﻿<MudDialog DisableSidePadding="true">
+    <DialogContent>
+        <EditForm Model="Country" OnValidSubmit="Ok">
+            <DataAnnotationsValidator />
+
+            <MudCard Elevation="0">
+                <MudCardContent>
+                    <MudTextField @bind-Value="@Country.Id" Label="Id" Disabled="true" />
+                    <MudTextField @bind-Value="@Country.Name" Label="Name" For="@(()=>Country.Name)" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton OnClick="Cancel" Class="ml-auto mr-2">Cancel</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" Color="Color.Primary">Save</MudButton>
+                </MudCardActions>
+            </MudCard>         
+
+        </EditForm>
+    </DialogContent>
+</MudDialog>

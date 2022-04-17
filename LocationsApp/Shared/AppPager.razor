@@ -1,0 +1,20 @@
+﻿<MudToolBar>
+    <MudFab OnClick="OnPreviousClick" 
+            Disabled="PreviousDisabled"
+            Icon="@Icons.Material.Filled.ArrowLeft" 
+            Size="Size.Small" 
+            IconSize="Size.Small" />
+
+    <MudText Class="mx-3">@CurrentPage</MudText>
+
+    <MudFab OnClick="OnNextClick" 
+            Disabled="NextDisabled"
+            Icon="@Icons.Material.Filled.ArrowRight" 
+            Size="Size.Small" 
+            IconSize="Size.Small" />
+
+    @if (RecordsCount > 0)
+    {
+        <MudText Class="mx-3">Total Records: @RecordsCount.ToString("N0")</MudText>
+    }
+</MudToolBar>

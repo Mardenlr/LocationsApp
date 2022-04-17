@@ -1,0 +1,71 @@
+﻿<MudDialog DisableSidePadding="true">
+    <DialogContent>
+        <div class="px-0">
+            <MudDivider DividerType="DividerType.FullWidth" />
+            @if (Data == null)
+            {
+                <MudProgressLinear Color="Color.Primary" Size="Size.Medium" Indeterminate="true" />
+            }
+            else
+            {
+                <MudTable Items="Data" Dense="true" Hover="true" Striped="false" Bordered="false" FixedHeader="true" Height="310px" Elevation="0">
+                    <ToolBarContent>
+                        <MudSpacer />
+                        <MudFocusTrap>
+                            <MudTextField T="string"
+                                          ValueChanged="@((filter)=> Search(filter))"
+                                          Clearable="true"
+                                          Placeholder="Search..."
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Search"
+                                          IconSize="Size.Medium"
+                                          Class="mt-0" />
+                        </MudFocusTrap>
+                    </ToolBarContent>
+                    <ColGroup>
+                        <col style="width: 75px;" />
+                        <col />
+                        <col style="width: 75px;" />
+                    </ColGroup>
+                    <HeaderContent>
+                        <MudTh>Id</MudTh>
+                        <MudTh>Description</MudTh>
+                        <MudTh></MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Id">@context.Id</MudTd>
+                        <MudTd DataLabel="Description">@context.Description</MudTd>
+                        <MudTd DataLabel="">
+                            <MudFab @onclick="@(() => SelectDataRow(context))"
+                                    Icon="@Icons.Material.Filled.Check"
+                                    Size="Size.Small"
+                                    IconSize="Size.Small"
+                                    Class="mr-2">
+                            </MudFab>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+                <MudDivider DividerType="DividerType.FullWidth" />
+                <div class="row mx-0">
+                    <AppPager CurrentPage="_currentPage"
+                               PreviousDisabled="_previousPageDisabled"
+                               NextDisabled="_nextPageDisabled"
+                               OnPreviousClick="PreviousPageClicked"
+                               OnNextClick="NextPageClicked" />
+                    <MudDivider Vertical="true" FlexItem="true" Class="mr-3" />
+                    <MudTextField Value="@(_selectedDataRow != null ? $"{_selectedDataRow.Id} - {_selectedDataRow.Description}" : "")"
+                                  Label="Selected" DisableUnderLine="true" ReadOnly="true" />
+                </div>
+            }
+            <MudDivider DividerType="DividerType.FullWidth" />
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="DialogCancel" Class="ml-auto mr-2">Cancel</MudButton>
+        <MudButton OnClick="DialogOk"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.Check"
+                   Disabled="@(_selectedDataRow == null)">OK</MudButton>
+    </DialogActions>
+</MudDialog>
