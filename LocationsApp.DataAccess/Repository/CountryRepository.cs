@@ -64,7 +64,7 @@ namespace LocationsApp.DataAccess.Repository
                 from 
                     dbo.Countries
                 where 
-                    Name LIKE '%' + @Name + '%'
+                    Name like '%' + @Name + '%'
                 order by 
                     Name,
                     Id
@@ -87,7 +87,7 @@ namespace LocationsApp.DataAccess.Repository
                 from 
                     dbo.Countries
                 where 
-                    Name LIKE '%' + @Name + '%'
+                    Name like '%' + @Name + '%'
                 order by 
                     Name,
                     Id

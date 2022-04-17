@@ -106,7 +106,7 @@ namespace LocationsApp.DataAccess.Repository
                     dbo.Cities
                 where
                     StateId = @StateId
-                and Name LIKE '%' + @Name + '%'
+                and Name like '%' + @Name + '%'
                 order by 
                     Name,
                     Id
