@@ -17,4 +17,4 @@ Who am I? <br/>
 I'm Marden Rodrigues DBA SQL Server and .Net Developer(VB.NET/C#) since 2010. <br/>
 Self-taught and very passionate about technology always looking for improvements.
 
-You can find me here: https://www.linkedin.com/in/marden-luciomar-rodrigues-a95165a1/
+You can find me here: <a href="https://www.linkedin.com/in/marden-luciomar-rodrigues-a95165a1/" target="_blank">Linkedin</a>
