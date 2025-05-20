@@ -10,7 +10,7 @@ else
 {
     <MudTable Items="_states" Dense="true" Hover="true" Striped="false" Bordered="false">
         <ToolBarContent>
-            <MudFab Icon="@Icons.Material.Filled.Add" Size="Size.Small" IconSize="Size.Small" OnClick="Add" />
+            <MudFab StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" IconSize="Size.Small" OnClick="Add" />
             <MudSpacer />
             <MudTextField T="string" 
                           ValueChanged="@((filter)=> Search(filter))" 
@@ -37,12 +37,12 @@ else
             <MudTd DataLabel="Country">@context.Country</MudTd>
             <MudTd DataLabel="Actions" Style="text-align:right">
                 <MudFab @onclick="@(()=>Edit(context))" 
-                        Icon="@Icons.Material.Filled.Edit" 
+                        StartIcon="@Icons.Material.Filled.Edit" 
                         Size="Size.Small" 
                         IconSize="Size.Small" 
                         Class="m-2"></MudFab>
                 <MudFab @onclick="@(()=>Delete(context))" 
-                        Icon="@Icons.Material.Filled.Delete" 
+                        StartIcon="@Icons.Material.Filled.Delete" 
                         Size="Size.Small" 
                         IconSize="Size.Small" 
                         Class="m-2"></MudFab>
